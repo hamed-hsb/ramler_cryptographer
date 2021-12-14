@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"ramler-golang/bitwise/package"
+	"ramler-golang/bitwise"
 )
 
 func main() {
