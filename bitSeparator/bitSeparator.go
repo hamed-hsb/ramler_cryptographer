@@ -3,15 +3,16 @@ package bitSeparator
 /**
 @au Mohammad Rezaie
 @date 13 Dec 2021
- */
+*/
 
 import (
+	"fmt"
 	"reflect"
 )
 
 /**
 this func get a string and convert it to an array of characters
- */
+*/
 func strToChar(str string) []string {
 	var charArr []string
 	chars := []rune(str)
@@ -25,7 +26,7 @@ func strToChar(str string) []string {
 
 /**
 this func convert characters to an array of byte
- */
+*/
 func charToByte(chars []string) []byte {
 	var byteArr []byte
 	for i := 0; i < len(chars); i++ {
@@ -35,11 +36,22 @@ func charToByte(chars []string) []byte {
 	return byteArr
 }
 
+/**
+this func convert get a array of byte and convert it to bit
+*/
+func byteToBit(bytes []byte) string{
+	bs := []byte(bytes)
+	bin := ""
+	for _, n := range bs {
+		bin = fmt.Sprintf("%s%.8b", bin, n)
+	}
+	return bin
+}
 
 
 /**
 this func get an interface and reverse it
- */
+*/
 func reverseStringArr(s []string) []string {
 	n := reflect.ValueOf(s).Len()
 	swap := reflect.Swapper(s)
@@ -51,7 +63,7 @@ func reverseStringArr(s []string) []string {
 
 /**
 this func get a string and reverse it
- */
+*/
 func reverseString(s string) string {
 	rns := []rune(s)
 	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
@@ -89,4 +101,11 @@ func SeparatorStringArr(s []string) []string  {
 		arr = append(arr,revS[i*8] + revS[i*8+1] + revS[i*8+2]+ revS[i*8+3] + revS[i*8+4]+ revS[i*8+5] + revS[i*8+6]+ revS[i*8+7])
 	}
 	return arr
+}
+
+// StringToBit is a func that get a string and convert it to a string of bits
+func StringToBit(s string) string {
+	chars := strToChar(s)
+	byteArr := charToByte(chars)
+	return byteToBit(byteArr)
 }
