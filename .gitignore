@@ -1,0 +1,8 @@
+#gitignore
+
+
+
+
+
+md2hash/
+*.go

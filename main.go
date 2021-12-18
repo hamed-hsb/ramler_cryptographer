@@ -3,9 +3,9 @@ package main
 
 
 import(
-
+"encrypter.com/ramler/sha256hash"
 	."fmt"
-
+	
 	_"strconv"
 
 )
@@ -20,6 +20,7 @@ func main(){
 	mySelect := 0
 	myStr := ""
 	help := ""
+	
 	for a == "y" {
 		a = "n"
 		myStr = ""
@@ -29,10 +30,12 @@ func main(){
 		
 		if(help == "yes" || help == "y"){
 			onHelp()
+			
+			
 		}
 		
+		onSelector()
 		
-		Println("1: select file \n2: enter string \n---------------------------\n--->")
 		Scanf("%d", &mySelect)
 		switch mySelect {
 		case 1:
@@ -70,24 +73,82 @@ func main(){
 }
 
 
-func onStart(){
+	func onStart(){
 
-Println("This is a program to generate a hash string. ramler can use different hash algorithms.")
-Println("If you will help enter Yes: ")
-Println("")
-}
+		Println("This is a program to generate a hash string. ramler can use different hash algorithms.")
+		Println("If you will help enter Yes: ")
+		Println("")
+	}
 
 
-func onHelp(){
-Println("\n")
-Println("You can using of these hash algorithms: ")
-Println("1- MD2 hash algorithm and return 128 bits hash.")
-Println("2- MD4 hash algorithm and return 128 bits hash.")
-Println("3- MD5 hash algorithm and return 128 bits hash.")
-Println("4- MD6 hash algorithm and return up to 512 bits hash.")
-Println("5- BSOGL (bit security of gate login) this algorithm return a hash string.")
-Println("\n")
-}
+	func onSelector(){
+
+		selector := 0
+		data := ""
+		
+		Println("Enter number item of hash algorithm(as 1 to 6) :")
+		Scanf("%d", &selector)
+		
+		switch selector {
+			case 1:
+				Println("MD2 algorithm selected .")
+			case 2:
+				Println("MD4 algorithm selected .")
+			case 3:
+				Println("MD5 algorithm selected .")
+			case 4:
+				Println("MD6 algorithm selected .")
+			case 5:
+				Println("SHA256 algorithm selected .")
+			case 6:
+				Println("BSOGL algorithm selected .")
+			
+		}
+		
+		
+		Println("Write anything :")
+		Scanf("%s",&data)
+		Println("in --> ",data)
+		switch selector {
+			case 1:
+				
+			case 2:
+				
+			case 3:
+				
+			case 4:
+				
+			case 5:
+				shaHashCode(data)
+				Println("\n")
+				Println("\n")
+			case 6:
+				
+			
+		}
+		
+		
+		
+			
+	}
+
+	func onHelp(){
+		Println("\n")
+		Println("You can using of these hash algorithms: ")
+		Println("1- MD2 hash algorithm and return 128 bits hash.")
+		Println("2- MD4 hash algorithm and return 128 bits hash.")
+		Println("3- MD5 hash algorithm and return 128 bits hash.")
+		Println("4- MD6 hash algorithm and return up to 512 bits hash.")
+		Println("5- SHA256 hash algorithm and return up to 256 Byte hash.")
+		Println("6- BSOGL (bit security of gate login) this algorithm return a hash string.")
+		Println("\n")
+	}
+	
+	func shaHashCode(data string){
+	
+		hash := sha256.Hash(data)
+		Println("out --> ",hash)
+	}
 
 
 
