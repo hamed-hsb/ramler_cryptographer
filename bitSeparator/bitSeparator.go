@@ -1,3 +1,7 @@
+/**
+this package convert a string to bits and convert bits to array of 8 bits
+ */
+
 package bitSeparator
 
 /**
