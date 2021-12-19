@@ -7,8 +7,8 @@ This package get a string of bits and separate to 8 bits
 package bitSeparator
 
 /**
-@au Mohammad Rezaie
-@date 13 Dec 2021
+@Au: Mohammad Rezaie
+@Date: 13 Dec 2021
 */
 
 import (
@@ -67,10 +67,8 @@ func reverseStringArr(s []string) []string {
 	return s
 }
 
-/**
-this func get a string and reverse it
-*/
-func reverseString(s string) string {
+// ReverseString that get a string and reverse all of that /**
+func ReverseString(s string) string {
 	rns := []rune(s)
 	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
 
