@@ -121,6 +121,7 @@ func MakeXorCoupleBits(str string) (string, bool) {
 }
 
 /**
+
 @param str: A string type argument which you need to make operati.
 @return: A boolian and an string type values which specify the status of operation and the result of the operation.
 
