@@ -20,15 +20,16 @@ import (
 this func get a string and convert it to an array of characters
 */
 func strToChar(str string) ([]string, error ) {
-	if len(str) <= 0 {
+	if len(str) <= 0 { //error handling
 		err := fmt.Errorf("string is empty!")
 		return nil, err
 	}
-	var charArr []string
-	chars := []rune(str)
+
+	var charArr []string // for storing array of character
+	chars := []rune(str) // for converting string to characters using rune function
 	for i := 0; i < len(chars); i++ {
-		char := string(chars[i])
-		charArr = append(charArr, char)
+		char := string(chars[i]) // for each character that we want to store it to "charArr"
+		charArr = append(charArr, char) // storing characters
 	}
 	return charArr , nil
 }
@@ -37,14 +38,15 @@ func strToChar(str string) ([]string, error ) {
 this func convert characters to an array of byte
 */
 func charToByte(chars []string) ([]byte, error) {
-	if len(chars) <= 0 {
+	if len(chars) <= 0 { //error handling
 		err := fmt.Errorf("srting is empty!")
 		return nil, err
 	}
-	var byteArr []byte
+
+	var byteArr []byte // for storing array of bytes
 	for i := 0; i < len(chars); i++ {
-		bytes := []byte(chars[i])
-		byteArr = append(byteArr, bytes...)
+		bytes := []byte(chars[i]) // for storing bytes of a character
+		byteArr = append(byteArr, bytes...) // storing bytes
 	}
 	return byteArr, nil
 }
@@ -53,14 +55,14 @@ func charToByte(chars []string) ([]byte, error) {
 this func convert get an array of byte and convert it to bit
 */
 func byteToBit(bytes []byte) (string,error) {
-	if len(bytes) <= 0{
+	if len(bytes) <= 0{ //error handling
 		err := fmt.Errorf("string is empty!")
 		return "", err
 	}
-	bs := []byte(bytes)
-	bin := ""
-	for _, n := range bs {
-		bin = fmt.Sprintf("%s%.8b", bin, n)
+
+	bin := "" // empty string for storing bits
+	for _, n := range bytes {
+		bin = fmt.Sprintf("%s%.8b", bin, n) // storing bits
 	}
 	return bin, nil
 }
@@ -69,7 +71,7 @@ func byteToBit(bytes []byte) (string,error) {
 this func get an interface and reverse it
 */
 func reverseStringArr(strArr []string) ([]string, error) {
-	if len(strArr) <= 0 {
+	if len(strArr) <= 0 { //error handling
 		err := fmt.Errorf("string is empty!")
 		return nil, err
 	}
@@ -80,11 +82,12 @@ func reverseStringArr(strArr []string) ([]string, error) {
 	}
 	return strArr, nil
 }
+
 // ReverseString arg(Str) : is a string that you want to reverse it
 // ReverseString return : is a reverse string that get form input of func
 // ReverseString : that get a string and reverse all of that /**
 func ReverseString(str string) (string, error) {
-	if len(str) <= 0 {
+	if len(str) <= 0 { // error handling
 		err := fmt.Errorf("string is empty!")
 		return "", err
 	}
@@ -97,29 +100,30 @@ func ReverseString(str string) (string, error) {
 
 // SeparatorString is a func that get a string and convert it to an array of 8 characters/**
 func SeparatorString(str string) ([]string, error)  {
-	if len(str) <= 0 {
+	if len(str) <= 0 { // error handling
 		err := fmt.Errorf("string is empty!")
 		return nil, err
 	}
-	revS, err := ReverseString(str)
-	if err != nil {
+	revS , err := ReverseString(str)
+	if err != nil { // error handling
 		fmt.Errorf("you have a err: ", err)
 	}
-	rns := []rune(revS)
-	var arr []string
-	var zero = '0'
+
+	rns := []rune(revS) // for convert string that reversed using "ReverseString" func to character
+	var arr []string // for storing 8bits
+	var zero = '0' // for add to bits if they are less than 8bits
 	for len(rns)%8 != 0 {
-		rns = append(rns, zero)
+		rns = append(rns, zero) // adding "zero" to bits if the length of last one is not 8
 	}
 	for i := 0; i < len(rns)/8 ; i++ {
-		arr = append(arr, string(rns[8*i:8*i+8]))
+		arr = append(arr, string(rns[8*i:8*i+8])) // storing 8bits
 	}
 	return arr, nil
 }
 
 // SeparatorStringArr is a func that get a string array and convert it to an array of 8 characters/**
 func SeparatorStringArr(strArr []string) ([]string, error)  {
-	if len(strArr) <= 0{
+	if len(strArr) <= 0{ //error handling
 		err := fmt.Errorf("string is empty!")
 		return nil, err
 	}
@@ -127,29 +131,30 @@ func SeparatorStringArr(strArr []string) ([]string, error)  {
 	if err != nil {
 		fmt.Errorf("you have err:", err)
 	}
-	zero := "0"
-	var arr []string
+	zero := "0" // for add to bits if they are less than 8
+	var arr []string // for storing 8bits
 	for len(revS)%8 != 0  {
-		revS = append(revS, zero)
+		revS = append(revS, zero) // adding "zero" to bits if the length of last one is not 8
 	}
 	for i := 0; i < len(revS)/8; i++ {
-		arr = append(arr,revS[i*8] + revS[i*8+1] + revS[i*8+2]+ revS[i*8+3] + revS[i*8+4]+ revS[i*8+5] + revS[i*8+6]+ revS[i*8+7])
+		arr = append(arr,revS[i*8] + revS[i*8+1] + revS[i*8+2]+ revS[i*8+3] + revS[i*8+4]+ revS[i*8+5] + revS[i*8+6]+ revS[i*8+7]) //storing 8bits
 	}
 	return arr, nil
 }
 
 // StringToBit is a func that get a string and convert it to a string of bits
 func StringToBit(str string) (string, error) {
-	if len(str) <= 0 {
+	if len(str) <= 0 { //error handling
 		err := fmt.Errorf("sring is empty!")
 		return "", err
 	}
+
 	chars, err1 := strToChar(str)
 	byteArr, err2 := charToByte(chars)
-	if err1!= nil  {
+	if err1 != nil { // error handling
 		fmt.Errorf("you have an err: ", err1)
 	}
-	if err2 != nil {
+	if err2 != nil { // error handling
 		fmt.Errorf("you have an err: ", err2)
 	}
 	return byteToBit(byteArr)
